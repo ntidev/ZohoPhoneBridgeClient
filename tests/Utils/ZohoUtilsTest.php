@@ -6,9 +6,9 @@
  * Time: 15:40
  */
 
-namespace NTI\ZohoPhoneBridgeClient\Tests\Service\User;
+namespace NTI\ZohoPhoneBridgeClient\Tests\Utils;
 
-use NTI\ZohoPhoneBridgeClient\Tests\Service\TestUtils;
+use NTI\ZohoPhoneBridgeClient\Tests\TestUtils;
 use NTI\ZohoPhoneBridgeClient\Util\ZohoUtils;
 use PHPUnit\Framework\TestCase;
 

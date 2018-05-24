@@ -6,7 +6,7 @@
  * Time: 14:33
  */
 
-namespace NTI\ZohoPhoneBridgeClient\Tests\Service;
+namespace NTI\ZohoPhoneBridgeClient\Tests;
 
 
 use NTI\ZohoPhoneBridgeClient\Model\ZohoClient;

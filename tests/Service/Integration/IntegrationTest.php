@@ -9,27 +9,22 @@
 namespace NTI\ZohoPhoneBridgeClient\Tests\Service\CallCantrol;
 
 
-use NTI\ZohoPhoneBridgeClient\Model\ZohoToken;
-use NTI\ZohoPhoneBridgeClient\Service\ZohoPhoneBridgeClient;
-use NTI\ZohoPhoneBridgeClient\Tests\Service\TestUtils;
-use NTI\ZohoPhoneBridgeClient\Util\ZohoUtils;
+use NTI\ZohoPhoneBridgeClient\Tests\TestUtils;
 use PHPUnit\Framework\TestCase;
 
 class IntegrationTest extends TestCase
 {
     public function testEnableIntegration()
     {
-
         $zohoClient = TestUtils::getZohoPhoneBridgeClient();
-
-       // $zohoClient->enableIntegration();
+        $zohoClient->enableIntegration();
         $this->assertTrue(true);
     }
 
     public function testDisableIntegration()
     {
         $zohoClient = TestUtils::getZohoPhoneBridgeClient();
-        //$zohoClient->disableIntegration();
+        $zohoClient->disableIntegration();
         $this->assertTrue(true);
     }
 }
