@@ -17,10 +17,10 @@ interface CallControlService
     /**
      * @param $userId -  The Zoho User Id that we have to enable Click2Call and the rest all CallFlow
      * @param array $params
-     * @param null $auhorizationParam
+     * @param null $authorizationParam
      * @return void
      */
-    public function enableClick2Call($userId, array $params, $auhorizationParam = null);
+    public function enableClick2Call($userId, array $params, $authorizationParam = null);
 
     /**
      * @param $userId - The Zoho User Id that want to be disable.

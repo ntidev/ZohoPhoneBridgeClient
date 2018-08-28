@@ -9,6 +9,22 @@
          processIsolation="false"
          stopOnFailure="false">
 
+
+    <php>
+        <env name="BASE_URL_PBX_API" value="https://url-api.yourpbx.com"/>
+        <env name="ZOHO_USER_ID" value="10201XXXXX"/>
+        <env name="ZOHO_REFRESH_TOKEN" value="xxxx-xxxxx-xxxxxxx-xxxx"/>
+        <env name="ZOHO_ACCESS_TOKEN" value="xxxx-xxxxx-xxxxxxx-xxxx"/>
+        <env name="ZOHO_UPDATED_AT" value="12012512512"/>
+        <env name="ZOHO_API_DOMAIN" value="https://url2zoho-api"/>
+        
+        <env name="ZOHO_CLIENT_ID" value="xx"/>
+        <env name="ZOHO_SECRET_US" value="xx"/>
+        <env name="ZOHO_SECRET_EU" value="xx"/>
+        <env name="ZOHO_REDIRECT_URL" value="xx"/>
+    </php>
+
+
     <testsuites>
         <testsuite name="Project Test Suite">
             <directory suffix="Test.php">./tests</directory>
