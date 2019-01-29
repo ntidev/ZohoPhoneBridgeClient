@@ -36,7 +36,6 @@ class UserServiceImp implements UserService
      */
     public function getUsers()
     {
-
         try {
             $response = $this->zohoPhoneBridgeClient
                 ->getGuzzleHttpClient()
@@ -46,8 +45,8 @@ class UserServiceImp implements UserService
 
             if ($response->getStatusCode() == 200) {
                 if (isset($content["users"])) {
-                    $users = array();
-                    foreach ($content["users"] as $u){
+                    $users = [];
+                    foreach ($content["users"] as $u) {
                         $users[] = new ZohoUser($u);
                     }
                     return $users;

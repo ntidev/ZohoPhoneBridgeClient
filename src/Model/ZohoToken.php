@@ -8,10 +8,8 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Model;
 
-
 class ZohoToken
 {
-
     private $accessToken;
     private $refreshToken;
     private $expiresIn;
@@ -146,7 +144,6 @@ class ZohoToken
         return $this;
     }
 
-
     /**
      *
      */
@@ -155,6 +152,4 @@ class ZohoToken
         $expireDate = $this->getUpdatedAt() + ($this->getExpiresIn()/1000);
         return ($expireDate >= time());
     }
-
-
 }

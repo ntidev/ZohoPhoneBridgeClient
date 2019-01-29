@@ -4,7 +4,6 @@ namespace NTI\ZohoPhoneBridgeClient\Service\User;
 
 interface UserService
 {
-
     const PATH_USERS = "users";
 
     /**

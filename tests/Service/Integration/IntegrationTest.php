@@ -8,7 +8,6 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Tests\Service\CallCantrol;
 
-
 use NTI\ZohoPhoneBridgeClient\Tests\TestUtils;
 use PHPUnit\Framework\TestCase;
 

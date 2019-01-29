@@ -10,7 +10,6 @@ namespace NTI\ZohoPhoneBridgeClient\Model;
 
 class ZohoUser
 {
-
     private $userId;
     private $email;
     private $username;
@@ -26,19 +25,16 @@ class ZohoUser
         $this->username = $userData["username"];
     }
 
-
     public function getUserId()
     {
         return $this->userId;
     }
-
 
     public function setUserId($userId)
     {
         $this->userId = $userId;
         return $this;
     }
-
 
     public function getEmail()
     {
@@ -56,12 +52,9 @@ class ZohoUser
         return $this->username;
     }
 
-
     public function setUsername($username)
     {
         $this->username = $username;
         return $this;
     }
-
-
 }

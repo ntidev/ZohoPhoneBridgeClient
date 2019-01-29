@@ -8,10 +8,8 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Model;
 
-
 class ZohoParam
 {
-
     private $params = array();
 
     public function put($key, $value)
@@ -24,13 +22,11 @@ class ZohoParam
     {
         $param = "[";
         $moreThanOne = false;
-        foreach ($this->params as $key => $value)
-        {
-            $param .= ( $moreThanOne ? "," : "")."{name:".$key.",value:".$value."}";
+        foreach ($this->params as $key => $value) {
+            $param .= ($moreThanOne ? "," : "")."{name:".$key.",value:".$value."}";
             $moreThanOne = true;
         }
 
         return $param."]";
     }
-
 }

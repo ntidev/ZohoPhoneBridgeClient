@@ -8,17 +8,14 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Tests\Service\CallCantrol;
 
-
 use NTI\ZohoPhoneBridgeClient\Tests\TestUtils;
 use NTI\ZohoPhoneBridgeClient\Util\ZohoUtils;
 use PHPUnit\Framework\TestCase;
 
 class CallControlServiceTest extends TestCase
 {
-
     public function testEnableClick2Call()
     {
-
         $baseUrl = getenv("BASE_URL_PBX_API");
         $userId = getenv("ZOHO_USER_ID");
 

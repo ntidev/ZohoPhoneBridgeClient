@@ -2,7 +2,6 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Service;
 
-
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use NTI\ZohoPhoneBridgeClient\Model\ZohoToken;
@@ -13,7 +12,6 @@ use NTI\ZohoPhoneBridgeClient\Service\User\UserServiceImp;
 
 class ZohoPhoneBridgeClient
 {
-
     const PATH_INTEGRATION = "integrate";
     const BASE_PATH_PHONEBRIDGE = "/crm/v2/phonebridge/";
 
@@ -111,6 +109,4 @@ class ZohoPhoneBridgeClient
             throw $ex;
         }
     }
-
-
 }

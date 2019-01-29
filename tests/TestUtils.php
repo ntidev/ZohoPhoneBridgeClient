@@ -8,15 +8,12 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Tests;
 
-
 use NTI\ZohoPhoneBridgeClient\Model\ZohoClient;
 use NTI\ZohoPhoneBridgeClient\Model\ZohoToken;
 use NTI\ZohoPhoneBridgeClient\Service\ZohoPhoneBridgeClient;
 
 class TestUtils
 {
-
-
     public static function getZohoToken()
     {
         $token = new ZohoToken();
@@ -34,11 +31,13 @@ class TestUtils
     }
 
 
-    public static function getZohoClient(){
+    public static function getZohoClient()
+    {
         return new ZohoClient(
             getenv("ZOHO_CLIENT_ID"),
             getenv("ZOHO_SECRET_US"),
             getenv("ZOHO_SECRET_EU"),
-            getenv("ZOHO_REDIRECT_URL"));
+            getenv("ZOHO_REDIRECT_URL")
+        );
     }
 }

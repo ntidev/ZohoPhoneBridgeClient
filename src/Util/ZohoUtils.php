@@ -8,7 +8,6 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Util;
 
-
 use GuzzleHttp\Client;
 use NTI\ZohoPhoneBridgeClient\Exception\RefreshTokenNotPresenceException;
 use NTI\ZohoPhoneBridgeClient\Model\ZohoClient;
@@ -17,13 +16,13 @@ use NTI\ZohoPhoneBridgeClient\Model\ZohoToken;
 
 class ZohoUtils
 {
-
     const ACCOUNTS_ZOHO_URL_US = "https://accounts.zoho.com";
     const ACCOUNTS_ZOHO_URL_EU = "https://accounts.zoho.eu";
 
     /**
      * @param ZohoClient $zohoClient
      * @param $state
+     *
      * @return string
      */
     public static function generateAuthorizationURL(ZohoClient $zohoClient, $state)
@@ -36,7 +35,6 @@ class ZohoUtils
         return $url;
     }
 
-
     /**
      *
      * @param ZohoClient $zohoClient
@@ -47,7 +45,6 @@ class ZohoUtils
      */
     public static function generateToken(ZohoClient $zohoClient, $code, $location = "us")
     {
-
         $apiDomain = self::ACCOUNTS_ZOHO_URL_US;
         $secret = $zohoClient->getClientSecretUS();
 
@@ -67,7 +64,6 @@ class ZohoUtils
             $response = $client->post($url, array());
 
             if ($response->getStatusCode() == 200) {
-
                 $content = json_decode($response->getBody()->getContents(), true);
                 if (isset($content["error"])) {
                     throw new \Exception($content["error"], 401);
@@ -95,7 +91,6 @@ class ZohoUtils
         }
     }
 
-
     /**
      * @param ZohoClient $zohoClient
      * @param ZohoToken $token
@@ -103,7 +98,6 @@ class ZohoUtils
      */
     public static function refreshToken(ZohoClient $zohoClient, ZohoToken $token)
     {
-
         $apiDomain = self::ACCOUNTS_ZOHO_URL_US;
         $secret = $zohoClient->getClientSecretUS();
 
@@ -122,7 +116,6 @@ class ZohoUtils
             $response = $client->post($url, array());
 
             if ($response->getStatusCode() == 200) {
-
                 $content = json_decode($response->getBody()->getContents(), true);
                 if (isset($content["error"])) {
                     throw new \Exception($content["error"], 401);
@@ -140,7 +133,6 @@ class ZohoUtils
             throw $ex;
         }
     }
-
 
     /**
      * @param $location
@@ -173,18 +165,17 @@ class ZohoUtils
      */
     public static function getClick2CallParams($baseUrl)
     {
-
-        $baseUrl .= (self::endsWith($baseUrl, "/") ? "" : "/");
+        $baseUrl = rtrim($baseUrl, "/");
 
         return [
-            "clicktocallurl" => $baseUrl . "click2call",
-            "answerurl" => $baseUrl . "answer",
-            "hungupurl" => $baseUrl . "hangup",
-            "muteurl" => $baseUrl . "mute",
-            "unmuteurl" => $baseUrl . "unmute",
-            "holdurl" => $baseUrl . "hold",
-            "unholdurl" => $baseUrl . "unhold",
-            "keypressurl" => $baseUrl . "keypress"
+            "clicktocallurl" => "${baseUrl}/click2call",
+            "hungupurl" => "${baseUrl}/hangup",
+            "muteurl" => "${baseUrl}/mute",
+            "unmuteurl" => "${baseUrl}/unmute",
+            // "answerurl" => "${baseUrl}/answer",
+            // "holdurl" => "${baseUrl}/hold",
+            // "unholdurl" => "${baseUrl}/unhold",
+            // "keypressurl" => "${baseUrl}/keypress"
         ];
     }
 
@@ -198,5 +189,4 @@ class ZohoUtils
         $param = new ZohoParam();
         return $param->put($key, $value);
     }
-
 }

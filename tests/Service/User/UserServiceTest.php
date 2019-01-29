@@ -13,9 +13,8 @@ use PHPUnit\Framework\TestCase;
 
 class UserServiceTest extends TestCase
 {
-
-    public function testGetUsers(){
-
+    public function testGetUsers()
+    {
         $zohoClient = TestUtils::getZohoPhoneBridgeClient();
         $zohoClient->enableIntegration();
         $users = $zohoClient->getUserService()->getUsers();
@@ -23,5 +22,4 @@ class UserServiceTest extends TestCase
         $this->assertTrue(isset($users));
         $this->assertTrue(is_array($users));
     }
-
 }

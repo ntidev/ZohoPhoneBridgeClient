@@ -14,10 +14,8 @@ use PHPUnit\Framework\TestCase;
 
 class ZohoUtilsTest extends TestCase
 {
-
     public function testGetClickToCallParams()
     {
-
         $baseUrl = getenv("BASE_URL_PBX_API");
 
         $params = ZohoUtils::getClick2CallParams($baseUrl);
@@ -39,7 +37,6 @@ class ZohoUtilsTest extends TestCase
 
     public function testRefreshToken()
     {
-
         $token = TestUtils::getZohoToken();
         $zohoClient = TestUtils::getZohoClient();
 
@@ -51,7 +48,6 @@ class ZohoUtilsTest extends TestCase
 
     public function testGetUrlByLocation()
     {
-
         $expectedUrl = "https://accounts.zoho.com";
         $url = ZohoUtils::getUrlByLocation("us");
         self::assertEquals($expectedUrl, $url);
@@ -61,5 +57,4 @@ class ZohoUtilsTest extends TestCase
 
         self::assertEquals($expectedUrl, $url);
     }
-
 }

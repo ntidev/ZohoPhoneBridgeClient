@@ -8,15 +8,12 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Model;
 
-
 class ZohoClient
 {
-
     private $clientId;
     private $clientSecretEU;
     private $clientSecretUS;
     private $redirectUrl;
-
 
     /**
      * ZohoClient constructor.
@@ -32,7 +29,6 @@ class ZohoClient
         $this->clientSecretUS = $clientSecretUS;
         $this->redirectUrl = $redirectUrl;
     }
-
 
     /**
      * @return string
@@ -65,10 +61,4 @@ class ZohoClient
     {
         return $this->redirectUrl;
     }
-
-
-
-
-
-
 }

@@ -8,10 +8,8 @@
 
 namespace NTI\ZohoPhoneBridgeClient\Service\CallCantrol;
 
-
 interface CallControlService
 {
-
     const PATH_CALL_CONTROL = "clicktocallandcallcontrol";
 
     /**
@@ -27,5 +25,4 @@ interface CallControlService
      * @return void
      */
     public function disableClick2Call($userId);
-
 }
