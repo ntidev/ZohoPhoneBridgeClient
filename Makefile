@@ -9,7 +9,6 @@ WHITE  := $(shell tput -Txterm setaf 7)
 RESET  := $(shell tput -Txterm sgr0)
 
 PROJECT_NAME = "zoho-phonebridge-client"
-NTI_COMPOSER_REPO = "https://repository.nettechinternational.com/repository/ntidev-composer-repo"
 VERSION=dev-master
 
 TARGET_MAX_CHAR_NUM=20
@@ -49,8 +48,8 @@ deploy-repo:
 	@echo 
 	@echo '1- Creating ${YELLOW}${PROJECT_NAME}.zip${RESET}'
 	@zip -r ${PROJECT_NAME}.zip composer.* phpunit.xml.dist src/
-	@echo '2- Uploading to NTI Composer Repo VERSION=${VERSION}'
-	@curl -v --user '${NTI_REPOSITORY_USER}:${NTI_REPOSITORY_PASSWORD}' --upload-file  ${PROJECT_NAME}.zip ${NTI_COMPOSER_REPO}/packages/upload/nti/${PROJECT_NAME}/${VERSION}
+	@echo '2- Uploading to NTI Composer Repo VERSION=${VERSION} to ${NTI_REPOSITORY_COMPOSER}'
+	@curl -v --user '${NTI_REPOSITORY_USER}:${NTI_REPOSITORY_PASSWORD}' --upload-file  ${PROJECT_NAME}.zip ${NTI_REPOSITORY_COMPOSER}/packages/upload/nti/${PROJECT_NAME}/${VERSION}
 	@echo '3- Removing files...'
 	@rm -rf ${PROJECT_NAME}.zip
 	@echo 'Done!!'
