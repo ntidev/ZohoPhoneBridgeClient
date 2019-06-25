@@ -1,15 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hventura
- * Date: 5/16/2018
- * Time: 11:48
- */
 
-namespace NTI\ZohoPhoneBridgeClient\Service\CallCantrol;
+namespace NTI\ZohoPhoneBridgeClient\Service\ClickToCall;
 
 use GuzzleHttp\Exception\GuzzleException;
 use NTI\ZohoPhoneBridgeClient\Service\ZohoPhoneBridgeClient;
+use NTI\ZohoPhoneBridgeClient\Model\ZohoParam;
 
 class CallControlServiceImp implements CallControlService
 {
@@ -28,23 +23,33 @@ class CallControlServiceImp implements CallControlService
     }
 
     /**
-     * @param $userId
+     * @param $zohoUser - It's Zoho User Id.
      * @param array $params - Array with Zoho params.
      * @param null $authorizationParam
      * @return void
      * @throws \Exception
      */
-    public function enableClick2Call($userId, array $params, $authorizationParam = null)
+    public function enableClickToDial($zohoUserId, array $params, $clickToCallWebHook, $authorizationParam = null)
     {
-        $queryParams = array_merge($params, [
-            "userid" => $userId,
-            "authorizationparam" => "{ name:authorization, value:".$authorizationParam."}"
+        $clickToCallWebHook = rtrim($clickToCallWebHook, '/');
+
+        $params =  array_merge($params, [
+            "zohoUserId" => $zohoUserId
         ]);
+
+        $clickToDialParam = ZohoParam::toParams($params);
+
+        $data =  [
+            "zohouser" => $zohoUserId,
+            "clicktodialuri" => $clickToCallWebHook . "/click2call",
+            "clicktodialparam" => $clickToDialParam,
+            "authorizationparam" => "{ name:authorization, value:".$authorizationParam."}"
+        ];
 
         try {
             $response = $this->zohoPhoneBridgeClient
                 ->getGuzzleHttpClient()
-                ->request('GET', CallControlService::PATH_CALL_CONTROL, ['query' => $queryParams]);
+                ->request('POST', CallControlService::PATH_CLICK_TO_DIAL, ['form_params' => $data]);
             if ($response->getStatusCode() != 200) {
                 $content = json_decode($response->getBody()->getContents(), true);
                 throw new \Exception($content["code"], $response->getStatusCode());
@@ -57,15 +62,15 @@ class CallControlServiceImp implements CallControlService
     }
 
     /**
-     * @param $userId
+     * @param $zohoUserId - It's Zoho User Id.
      * @throws \Exception
      */
-    public function disableClick2Call($userId)
+    public function disableClickToDial($zohoUserId)
     {
         try {
             $response = $this->zohoPhoneBridgeClient
                 ->getGuzzleHttpClient()
-                ->request('DELETE', CallControlService::PATH_CALL_CONTROL);
+                ->request('DELETE', CallControlService::PATH_CLICK_TO_DIAL);
 
             if ($response->getStatusCode() != 200) {
                 $content = json_decode($response->getBody()->getContents(), true);

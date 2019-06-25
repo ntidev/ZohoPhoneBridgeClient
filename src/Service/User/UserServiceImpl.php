@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hventura
- * Date: 5/16/2018
- * Time: 09:24
- */
 
 namespace NTI\ZohoPhoneBridgeClient\Service\User;
 

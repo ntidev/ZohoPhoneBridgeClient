@@ -1,17 +1,10 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hventura
- * Date: 5/18/2018
- * Time: 11:09
- */
 
 namespace NTI\ZohoPhoneBridgeClient\Util;
 
 use GuzzleHttp\Client;
 use NTI\ZohoPhoneBridgeClient\Exception\RefreshTokenNotPresenceException;
 use NTI\ZohoPhoneBridgeClient\Model\ZohoClient;
-use NTI\ZohoPhoneBridgeClient\Model\ZohoParam;
 use NTI\ZohoPhoneBridgeClient\Model\ZohoToken;
 
 class ZohoUtils
@@ -27,7 +20,7 @@ class ZohoUtils
      */
     public static function generateAuthorizationURL(ZohoClient $zohoClient, $state)
     {
-        $url = self::ACCOUNTS_ZOHO_URL_US . "/oauth/v2/auth?scope=ZohoCRM.crmphonebridge.CREATE,ZohoCRM.crmphonebridge.READ&client_id={clientId}&redirect_uri={redirectUri}&state={state}&response_type=code&access_type=offline";
+        $url = self::ACCOUNTS_ZOHO_URL_US . "/oauth/v2/auth?scope=PhoneBridge.call.log,PhoneBridge.zohoone.search&client_id={clientId}&redirect_uri={redirectUri}&state={state}&response_type=code&access_type=offline";
         $url = str_replace("{clientId}", $zohoClient->getClientId(), $url);
         $url = str_replace("{redirectUri}", $zohoClient->getRedirectUrl(), $url);
         $url = str_replace("{state}", $state, $url);
@@ -157,36 +150,5 @@ class ZohoUtils
     {
         $length = strlen($needle);
         return $length === 0 || (substr($haystack, -$length) === $needle);
-    }
-
-    /**
-     * @param $baseUrl - The base URL where API is listening.
-     * @return array
-     */
-    public static function getClick2CallParams($baseUrl)
-    {
-        $baseUrl = rtrim($baseUrl, "/");
-
-        return [
-            "clicktocallurl" => "${baseUrl}/click2call",
-            "hungupurl" => "${baseUrl}/hangup",
-            "muteurl" => "${baseUrl}/mute",
-            "unmuteurl" => "${baseUrl}/unmute",
-            // "answerurl" => "${baseUrl}/answer",
-            // "holdurl" => "${baseUrl}/hold",
-            // "unholdurl" => "${baseUrl}/unhold",
-            // "keypressurl" => "${baseUrl}/keypress"
-        ];
-    }
-
-    /**
-     * @param $key
-     * @param $value
-     * @return ZohoParam
-     */
-    public static function putParam($key, $value)
-    {
-        $param = new ZohoParam();
-        return $param->put($key, $value);
     }
 }

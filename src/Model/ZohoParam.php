@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: hventura
- * Date: 5/22/2018
- * Time: 11:28
- */
 
 namespace NTI\ZohoPhoneBridgeClient\Model;
 
@@ -12,10 +6,20 @@ class ZohoParam
 {
     private $params = array();
 
+    public function __construct($params)
+    {
+        $this->params = $params;
+    }
+
     public function put($key, $value)
     {
         $this->params[$key] = $value;
         return $this;
+    }
+
+    public static function toParams($data = array())
+    {
+        return (new ZohoParam($data))->getZohoFormat();
     }
 
     public function getZohoFormat()

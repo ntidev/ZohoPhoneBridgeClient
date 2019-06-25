@@ -8,12 +8,12 @@ use NTI\ZohoPhoneBridgeClient\Model\ZohoToken;
 use NTI\ZohoPhoneBridgeClient\Service\CallCantrol\CallControlService;
 use NTI\ZohoPhoneBridgeClient\Service\CallCantrol\CallControlServiceImp;
 use NTI\ZohoPhoneBridgeClient\Service\User\UserService;
-use NTI\ZohoPhoneBridgeClient\Service\User\UserServiceImp;
+use NTI\ZohoPhoneBridgeClient\Service\User\UserServiceImpl;
 
 class ZohoPhoneBridgeClient
 {
     const PATH_INTEGRATION = "integrate";
-    const BASE_PATH_PHONEBRIDGE = "/crm/v2/phonebridge/";
+    const BASE_PATH_PHONEBRIDGE = "/phonebridge/v3/";
 
     private $token;
 
@@ -55,7 +55,7 @@ class ZohoPhoneBridgeClient
      */
     public function getUserService()
     {
-        return new UserServiceImp($this);
+        return new UserServiceImpl($this);
     }
 
     /**
@@ -66,6 +66,16 @@ class ZohoPhoneBridgeClient
     public function getCallControl()
     {
         return new CallControlServiceImp($this);
+    }
+
+    /**
+     *
+     *
+     * @return ClickToCall
+     */
+    public function getClickToCall()
+    {
+        return new ClickToCall($this);
     }
 
 
